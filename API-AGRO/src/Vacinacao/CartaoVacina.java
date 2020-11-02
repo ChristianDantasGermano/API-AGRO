@@ -8,12 +8,12 @@ import Dados.Animal;
 public class CartaoVacina {
 	private Animal animal;
 	private List<Vacina> vacinas = new ArrayList<Vacina>();
-	private List<AgendaVacina> vanicasAgendadas = new ArrayList<AgendaVacina>();
+	private List<AgendaVacina> vacinasAgendadas = new ArrayList<AgendaVacina>();
 
-	public CartaoVacina(Animal animal, List<Vacina> vacinas, List<AgendaVacina> vanicasAgendadas) {
+	public CartaoVacina(Animal animal, List<Vacina> vacinas, List<AgendaVacina> vacinasAgendadas) {
 		this.animal = animal;
-		this.vacinas = vacinas;
-		this.vanicasAgendadas = vanicasAgendadas;
+		this.vacinas.addAll(vacinas);
+		this.vacinasAgendadas.addAll(vacinasAgendadas);
 	}
 
 	public Animal getAnimal() {
@@ -24,8 +24,29 @@ public class CartaoVacina {
 		return vacinas;
 	}
 
-	public List<AgendaVacina> getVanicasAgendadas() {
-		return vanicasAgendadas;
+	public List<AgendaVacina> getvacinasAgendadas() {
+		return vacinasAgendadas;
+	}
+
+	public void setVacinas(List<Vacina> vacinas) {
+		this.vacinas.addAll(vacinas);
+	}
+
+	public void setVacinas(Vacina vacinas) {
+		this.vacinas.add(vacinas);
+	}
+
+	public void setvacinasAgendadas(List<AgendaVacina> vacinasAgendadas) {
+		this.vacinasAgendadas.addAll(vacinasAgendadas);
+	}
+
+	public void setvacinasAgendadas(AgendaVacina vacinasAgendadas) {
+		this.vacinasAgendadas.add(vacinasAgendadas);
+	}
+
+	public void completaVacinacao(AgendaVacina vacinasAgendadas) {
+		this.vacinasAgendadas.remove(vacinasAgendadas);
+		this.vacinas.add(vacinasAgendadas.getVacina());
 	}
 
 }
