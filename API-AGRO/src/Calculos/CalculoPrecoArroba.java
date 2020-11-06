@@ -1,23 +1,14 @@
 package Calculos;
 
-import java.util.ArrayList;
-
-import Dados.Animal;
-
 public class CalculoPrecoArroba extends CalculoPreco{
 
-	public CalculoPrecoArroba(ArrayList<Animal> animal, double valorPeso) {
-		super(animal, valorPeso);
-		
-		for(Animal a: animal) {
-			//valorPeso = a.getPeso().getPesoArroba;
-		}
+	public CalculoPrecoArroba(double valorArroba) {
+		super();
+		valorPeso = valorArroba;
 	}
 
 	@Override
-	public double CalculaPreco(double valorPeso, double valorCotacao) {
-		return valorPeso * 150;
-	}
-	
-
+	public double calculaPreco(double valorPeso, Cotacao cotacao) {
+		return valorPeso * cotacao.getCotacao();
+	}	
 }

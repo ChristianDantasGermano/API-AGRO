@@ -6,12 +6,17 @@ import java.util.Date;
 import Dados.Animal;
 
 public class Venda {
-	private ArrayList<Animal> animais = new ArrayList<Animal>();
-	private ArrayList<Animal> valorAnimalUni = new ArrayList<Animal>();
-	private ArrayList<Animal> valorTotal = new ArrayList<Animal>();
+	private ArrayList<Object> animais = new ArrayList<Object>();
+	private ArrayList<Object> valorAnimalUni = new ArrayList<Object>();
+	private ArrayList<Object> valorTotal = new ArrayList<Object>();
 	private Date dataVenda;
+	public double valorArroba = 0;
+	public double valorKg = 0;
+	public CalculoPreco calculoArroba;
+	public CalculoPreco calculoKg;
 	
-	public Venda(ArrayList<Animal> animais, ArrayList<Animal> valorAnimalUni, ArrayList<Animal> valorTotal,
+	
+	public Venda(ArrayList<Object> animais, ArrayList<Object> valorAnimalUni, ArrayList<Object> valorTotal,
 			Date dataVenda) {
 		this.animais = animais;
 		this.valorAnimalUni = valorAnimalUni;
@@ -19,27 +24,27 @@ public class Venda {
 		this.dataVenda = dataVenda;
 	}
 
-	public ArrayList<Animal> getAnimais() {
+	public ArrayList<Object> getAnimais() {
 		return animais;
 	}
 
-	public void setAnimais(ArrayList<Animal> animais) {
+	public void setAnimais(ArrayList<Object> animais) {
 		this.animais = animais;
 	}
 
-	public ArrayList<Animal> getValorAnimalUni() {
+	public ArrayList<Object> getValorAnimalUni() {
 		return valorAnimalUni;
 	}
 
-	public void setValorAnimalUni(ArrayList<Animal> valorAnimalUni) {
+	public void setValorAnimalUni(ArrayList<Object> valorAnimalUni) {
 		this.valorAnimalUni = valorAnimalUni;
 	}
 
-	public ArrayList<Animal> getValorTotal() {
+	public ArrayList<Object> getValorTotal() {
 		return valorTotal;
 	}
 
-	public void setValorTotal(ArrayList<Animal> valorTotal) {
+	public void setValorTotal(ArrayList<Object> valorTotal) {
 		this.valorTotal = valorTotal;
 	}
 
@@ -51,6 +56,21 @@ public class Venda {
 		this.dataVenda = dataVenda;
 	}
 	
-	
+	public void precosVenda (ArrayList<Object> animais) {
+		for(int i = 1; i<animais.size(); i=i+6) {
+			Peso p = new Peso((double)animais.get(i), (double)animais.get(i+1));
+			this.valorArroba = this.valorArroba + p.getPesoArroba();
+			this.valorKg = this.valorKg + p.getPesoKg();
+			calculoArroba = (CalculoPreco) new CalculoPrecoArroba(this.valorArroba);
+			calculoKg = (CalculoPreco) new CalculoPrecoKg(this.valorKg);
+		//	valorAnimalUni.add(calculoArroba, calculoKg);
+			
+		}
+		
+		calculoArroba = (CalculoPreco) new CalculoPrecoArroba(this.valorArroba);
+		calculoKg = (CalculoPreco) new CalculoPrecoKg(this.valorKg);
+		
+		
+	}
 	
 }
