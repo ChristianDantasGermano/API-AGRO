@@ -2,20 +2,18 @@ package Calculos;
 
 import java.util.ArrayList;
 
-public class CalculoPreco {
+import Dados.Animal;
+
+public abstract class CalculoPreco {
 	
-	protected ArrayList<String> animal = new ArrayList<String>();
+	protected ArrayList<Animal> animal = new ArrayList<Animal>();
 	protected double valorPeso;
-	protected double valorCotacao;
 	
-	public CalculoPreco(ArrayList<String> animal, double valorPeso, double valorCotacao) {
+	public CalculoPreco(ArrayList<Animal> animal, double valorPeso) {
 		this.animal.addAll(animal);
 		this.valorPeso = valorPeso;
-		this.valorCotacao = valorCotacao;
 	}
 	
-	public double CalculaPeso() {
-		return valorPeso * valorCotacao;
-	}
+	public abstract double CalculaPreco(double valorPeso, double valorCotacao);
 
 }
