@@ -2,14 +2,16 @@ package Dados;
 
 import java.util.Date;
 
+import Calculos.Peso;
+
 public abstract class Animal {
 	protected double registro;
-	protected int peso;
+	protected Peso peso;
 	protected String raca;
 	protected String genero;
 	protected Date dataNascimento;
 
-	protected Animal(double registro, int peso, String raca, String genero, Date dataNascimento) {
+	protected Animal(double registro, Peso peso, String raca, String genero, Date dataNascimento) {
 		this.registro = registro;
 		this.peso = peso;
 		this.raca = raca;
@@ -21,7 +23,7 @@ public abstract class Animal {
 		return registro;
 	}
 
-	public int getPeso() {
+	public Peso getPeso() {
 		return peso;
 	}
 
