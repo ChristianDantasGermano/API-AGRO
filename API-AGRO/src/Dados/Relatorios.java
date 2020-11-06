@@ -1,4 +1,4 @@
-package Calculos;
+package Dados;
 
 import java.util.ArrayList;
 
@@ -22,13 +22,15 @@ public class Relatorios {
 		this.totalAnimais = animais.size()/5;
 		
 		for(int i = 0; i<animais.size(); i++) {
-			
 			if(animais.get(i) == "M") {
 				contM++;
 			}
 			else if(animais.get(i) == "F") {
 				contF++;
 			}
+		}
+		for(int i =0; i<animais.size(); i++) {
+			
 		}
 		this.quantMachos = contM;
 		this.quantFemeas = contF;
