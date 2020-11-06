@@ -8,6 +8,10 @@ public class CalculoPrecoArroba extends CalculoPreco{
 
 	public CalculoPrecoArroba(ArrayList<Animal> animal, double valorPeso) {
 		super(animal, valorPeso);
+		
+		for(Animal a: animal) {
+			//valorPeso = a.getPeso().getPesoArroba;
+		}
 	}
 
 	@Override

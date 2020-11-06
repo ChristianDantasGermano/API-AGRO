@@ -12,8 +12,9 @@ public abstract class CalculoPreco {
 	public CalculoPreco(ArrayList<Animal> animal, double valorPeso) {
 		this.animal.addAll(animal);
 		this.valorPeso = valorPeso;
-	}
 	
+}
+		
 	public abstract double CalculaPreco(double valorPeso, double valorCotacao);
 
 }
