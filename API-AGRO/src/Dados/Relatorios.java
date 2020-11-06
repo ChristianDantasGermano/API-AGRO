@@ -2,8 +2,10 @@ package Dados;
 
 import java.util.ArrayList;
 
+import Calculos.Peso;
+
 public class Relatorios {
-	protected ArrayList<String> animais = new ArrayList<String>();
+	protected ArrayList<Object> animais = new ArrayList<Object>();
 	protected int totalAnimais;
 	protected double TotalKg;
 	protected double TotalArroba;
@@ -13,10 +15,12 @@ public class Relatorios {
 	protected int quantFaltaVacinar;
 	
 	
-	public void PreencheAnimal(ArrayList<String> animal) {
+	public void PreencheAnimal(ArrayList<Object> animal) {
 		this.animais.addAll(animal);
 		int contM = 0;
 		int contF = 0;
+		double contKg = 0;
+		double contArroba = 0;
 		
 		
 		this.totalAnimais = animais.size()/5;
@@ -29,12 +33,17 @@ public class Relatorios {
 				contF++;
 			}
 		}
-		for(int i =0; i<animais.size(); i++) {
-			
+
+		for(int i = 1; i<animais.size(); i = i+6) {
+			Peso p = new Peso((double)animais.get(i), (double) animais.get(i+1));
+			contKg = contKg + p.getPesoKg();
+			contArroba = contArroba + p.getPesoArroba();
 		}
+		//setando os contadores
+		this.TotalKg = contKg;
+		this.TotalArroba = contArroba;
 		this.quantMachos = contM;
 		this.quantFemeas = contF;
-		
 		
 	}
 	
