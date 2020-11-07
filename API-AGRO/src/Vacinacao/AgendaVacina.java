@@ -1,26 +1,13 @@
 package Vacinacao;
 
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@NoArgsConstructor @AllArgsConstructor 
 public class AgendaVacina {
-	private Vacina vacina;
-	private Date dataVacinacao;
-
-	public AgendaVacina(Vacina vacina, Date dataVacinacao) {
-		this.vacina = vacina;
-		this.dataVacinacao = dataVacinacao;
-	}
-
-	public Vacina getVacina() {
-		return vacina;
-	}
-
-	public Date getDataVacinacao() {
-		return dataVacinacao;
-	}
-
-	public void setDataVacinacao(Date dataVacinacao) {
-		this.dataVacinacao = dataVacinacao;
-	}
+	@Getter @Setter private Vacina vacina;
+	@Getter @Setter private String dataVacinacao;
 
 }

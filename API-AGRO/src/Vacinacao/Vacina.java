@@ -1,26 +1,13 @@
 package Vacinacao;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor @AllArgsConstructor 
 public abstract class Vacina {
-	protected String nome;
-	protected String descricao;
-	protected String observacao;
-
-	protected Vacina(String nome, String descricao, String observacao) {
-		this.nome = nome;
-		this.descricao = descricao;
-		this.observacao = observacao;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public String getObservacao() {
-		return observacao;
-	}
-
+	@Getter @Setter protected String nome;
+	@Getter @Setter protected String descricao;
+	@Getter @Setter protected String observacao;
 }

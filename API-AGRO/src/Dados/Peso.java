@@ -1,8 +1,11 @@
-package Calculos;
+package Dados;
+
+import lombok.Getter;
+import lombok.Setter;
 
 public class Peso {
-	private double pesoArroba;
-	private double pesoKg;
+	@Getter @Setter private double pesoArroba;
+	@Getter @Setter private double pesoKg;
 	
 	
 	public Peso(double pesokg, double pesoarroba){
@@ -25,22 +28,5 @@ public class Peso {
 		this.setPesoArroba((valorKg/14.688));
 		return (getPesoArroba());
 	}
-
-	public double getPesoKg() {
-		return pesoKg;
-	}
-
-	public void setPesoKg(double pesoKg) {
-		this.pesoKg = pesoKg;
-	}
-
-	public double getPesoArroba() {
-		return pesoArroba;
-	}
-
-	public void setPesoArroba(double pesoArroba) {
-		this.pesoArroba = pesoArroba;
-	}
-	
 	
 }

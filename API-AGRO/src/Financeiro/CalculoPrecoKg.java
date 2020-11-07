@@ -1,4 +1,4 @@
-package Calculos;
+package Financeiro;
 
 public class CalculoPrecoKg extends CalculoPreco{
 	

@@ -1,4 +1,4 @@
-package Calculos;
+package Financeiro;
 
 public abstract class CalculoPreco {
 	protected double valorPeso;

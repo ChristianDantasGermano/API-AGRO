@@ -1,12 +1,16 @@
 package Vacinacao;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import Dados.Animal;
-
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@NoArgsConstructor
 public class CartaoVacina {
-	private Animal animal;
+	@Getter @Setter private Animal animal;
 	private List<Vacina> vacinas = new ArrayList<Vacina>();
 	private List<AgendaVacina> vacinasAgendadas = new ArrayList<AgendaVacina>();
 
@@ -16,9 +20,6 @@ public class CartaoVacina {
 		this.vacinasAgendadas.addAll(vacinasAgendadas);
 	}
 
-	public Animal getAnimal() {
-		return animal;
-	}
 
 	public List<Vacina> getVacinas() {
 		return vacinas;
