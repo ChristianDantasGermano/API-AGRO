@@ -1,11 +1,20 @@
 package Financeiro;
 
-public abstract class CalculoPreco {
+public class CalculoPreco {
 	protected double valorPeso;
+	protected Cotacao cotacao;
 	
 	public CalculoPreco() {
 		
 	}
 	
-	public abstract double calculaPreco(double valorPeso, Cotacao cotacao);
+	public double calculaPrecoArroba(double peso) {
+		this.valorPeso = peso;
+		return valorPeso * cotacao.getCotacao();
+	}
+	
+	public double calculaPrecoKg(double peso) {
+		this.valorPeso = peso;
+		return valorPeso * cotacao.getCotacao();
+	}
 }

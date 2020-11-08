@@ -20,21 +20,25 @@ public class Venda {
 	@Getter @Setter private Date dataVenda;
 	@Getter @Setter private double valorArroba = 0;
 	@Getter @Setter private double valorKg = 0;
-	/*
-	private CalculoPrecoArroba calculoArroba;
-    private CalculoPrecoKg calculoKg;
+	
+	CalculoPreco cp = new CalculoPreco();
     
 	public void precosVenda(ArrayList<Object> animais) {
+		double arroba;
+		double kg;
+		for(int j = 0; j < animais.size(); j = j + 6) {
+			valorAnimalUni.add(animais.get(j));
 		for (int i = 1; i < animais.size(); i = i + 6) {
 			Peso p = new Peso((double) animais.get(i), (double) animais.get(i + 1));
 			this.valorArroba = this.valorArroba + p.getPesoArroba();
 			this.valorKg = this.valorKg + p.getPesoKg();
-			calculoArroba = new CalculoPrecoArroba(this.valorArroba);
-			calculoKg = new CalculoPrecoKg(this.valorKg);
-			// valorAnimalUni.add(calculoArroba, calculoKg);
+			arroba = p.getPesoArroba();
+			valorAnimalUni.add(cp.calculaPrecoArroba(arroba));
+			kg = p.getPesoKg();
+			valorAnimalUni.add(cp.calculaPrecoKg(kg));
 		}
-		calculoArroba = new CalculoPrecoArroba(this.valorArroba);
-		calculoKg = new CalculoPrecoKg(this.valorKg);
+		}
+		this.valorTotal.add(cp.calculaPrecoArroba(valorArroba));
+		this.valorTotal.add(cp.calculaPrecoKg(valorKg));
 	}
-	*/
 }
