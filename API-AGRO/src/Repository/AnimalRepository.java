@@ -22,10 +22,6 @@ public class AnimalRepository {
 	
 	public void setBois(String[] valor,double[] valorNum) {
 		Peso peso = new Peso(valorNum[0],valorNum[1]);
-		System.out.println(valorNum[0]);
-		System.out.println(valorNum[1]);
-		System.out.println(peso.getPesoArroba());
-		System.out.println(peso.getPesoKg());
 		Bovinos obj = new Bovinos(regBoi,peso,valor[0],valor[1],valor[2]);
 		regBoi++; 
 		bois.add(obj);
