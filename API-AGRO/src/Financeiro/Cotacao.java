@@ -7,5 +7,6 @@ import lombok.Setter;
 
 @NoArgsConstructor @AllArgsConstructor 
 public class Cotacao {
-	@Getter @Setter protected double cotacao;
+	@Getter @Setter protected double cotacaoKg;
+	@Getter @Setter protected double cotacaoArroba;
 }

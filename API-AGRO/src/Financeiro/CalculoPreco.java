@@ -10,11 +10,11 @@ public class CalculoPreco {
 	
 	public double calculaPrecoArroba(double peso) {
 		this.valorPeso = peso;
-		return valorPeso * cotacao.getCotacao();
+		return valorPeso * cotacao.getCotacaoArroba();
 	}
 	
 	public double calculaPrecoKg(double peso) {
 		this.valorPeso = peso;
-		return valorPeso * cotacao.getCotacao();
+		return valorPeso * cotacao.getCotacaoKg();
 	}
 }
