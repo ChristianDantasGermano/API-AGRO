@@ -9,7 +9,9 @@ public class InterfaceTexto {
 	protected InterRelatorios relatorios; 
 
 	protected Scanner ler = new Scanner(System.in);
-	protected int escolha;
+	protected int valorInt;
+	protected String valorTexto;
+	protected double valorDouble;
 
 	public void MenuPrincipal() {
 		System.out.print("##----------API-AGRO---------##\n\n");
@@ -21,9 +23,9 @@ public class InterfaceTexto {
 		System.out.print("| Opção 5 - Sair              |\n");
 		System.out.print("|-----------------------------|\n");
 		System.out.print("Digite uma opção:");
-		escolha = ler.nextInt();
+		valorInt = ler.nextInt();
 
-		switch (escolha) {
+		switch (valorInt) {
 			case 1:
 				animais = new InterAnimais();
 				break;

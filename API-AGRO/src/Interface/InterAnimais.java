@@ -12,9 +12,9 @@ public class InterAnimais extends InterfaceTexto {
 		System.out.print("| Opção 5 - Voltar            |\n");
 		System.out.print("|-----------------------------|\n");
 		System.out.print("Digite uma opção:");
-		escolha = ler.nextInt();
+		valorInt = ler.nextInt();
 
-		switch (escolha) {
+		switch (valorInt) {
 		case 1:
 			break;
 		case 2:
