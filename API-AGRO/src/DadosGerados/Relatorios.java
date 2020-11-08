@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import Dados.Peso;
 import Financeiro.CalculoPreco;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
 public class Relatorios {
 	@Getter @Setter protected ArrayList<Object> animais = new ArrayList<Object>();
 	@Getter @Setter protected int totalAnimais;
@@ -21,7 +23,12 @@ public class Relatorios {
 	CalculoPreco cp = new CalculoPreco();
 	
 	
-	
+	public Relatorios(ArrayList<Object> animal, ArrayList<Object> vacinas,
+			ArrayList<Object> agendados) {
+		PreencheAnimal(animal);
+		PreencheVacina(vacinas, agendados);
+		PreenchePreco(animal);
+	}
 	public void PreencheAnimal(ArrayList<Object> animal) {
 		this.animais.addAll(animal);
 		int contM = 0;
@@ -57,7 +64,7 @@ public class Relatorios {
 	public void PreencheVacina(ArrayList<Object> vacinas, ArrayList<Object> agendados) {
 		int contVacinados = 0;
 		int contFaltaVacinar = 0;
-		/*
+		
 		//obtendo a contagem
 		for(Object obj : vacinas) {
 			contVacinados++;
@@ -65,7 +72,6 @@ public class Relatorios {
 		for(Object obj : agendados) {
 			contFaltaVacinar++;
 		}
-		*/
 		//colocando nas variaveis
 		this.quantVacinado = (contVacinados/totalAnimais)*100;
 		this.quantFaltaVacinar = (contFaltaVacinar/totalAnimais)*100;
@@ -80,6 +86,7 @@ public class Relatorios {
 			contaprecokg = contaprecokg + p.getPesoKg();
 			contaprecoarroba = contaprecoarroba + p.getPesoArroba();
 		}
+		//colocando nas variaveis
 		this.totalPrecokg = cp.calculaPrecoKg(contaprecokg);
 		this.totalPrecoarroba = cp.calculaPrecoArroba(contaprecoarroba);
 	}
