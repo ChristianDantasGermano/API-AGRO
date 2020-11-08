@@ -12,6 +12,9 @@ public class InterfaceTexto {
 	protected int valorInt;
 	protected String valorTexto;
 	protected double valorDouble;
+	protected String[] valorArrayTexto;
+	protected int[] valorArrayInt;
+	protected double[] valorArrayDouble;
 
 	public void MenuPrincipal() {
 		System.out.print("##----------API-AGRO---------##\n\n");
@@ -28,6 +31,7 @@ public class InterfaceTexto {
 		switch (valorInt) {
 			case 1:
 				animais = new InterAnimais();
+				animais.MenuAnimais();
 				break;
 			case 2:
 				vacinas = new InterVacinas();

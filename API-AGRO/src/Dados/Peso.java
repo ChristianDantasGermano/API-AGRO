@@ -1,15 +1,16 @@
 package Dados;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor 
+@NoArgsConstructor @AllArgsConstructor 
 public class Peso {
-	@Getter @Setter private double pesoArroba;
-	@Getter @Setter private double pesoKg;
-	
-	
+    @Getter @Setter private double pesoArroba;
+    @Getter @Setter private double pesoKg;
+    
+	/*
 	public Peso(double pesokg, double pesoarroba){
 		if(pesokg == 0) {
 			converteKg(pesoarroba);
@@ -17,8 +18,8 @@ public class Peso {
 		else if(pesoarroba == 0) {
 			converteArroba(pesokg);
 		}
+			
 	}
-	
 	public double converteKg(double valorArroba) {
 		this.setPesoArroba(valorArroba);
 		this.setPesoKg((valorArroba*14.688));
@@ -30,5 +31,5 @@ public class Peso {
 		this.setPesoArroba((valorKg/14.688));
 		return (getPesoArroba());
 	}
-	
+	*/
 }
