@@ -3,6 +3,7 @@ package DadosGerados;
 import java.util.ArrayList;
 
 import Dados.Peso;
+import Financeiro.CalculoPreco;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,10 @@ public class Relatorios {
 	@Getter @Setter protected int quantFemeas;
 	@Getter @Setter protected int quantVacinado;
 	@Getter @Setter protected int quantFaltaVacinar;
+	@Getter @Setter protected double totalPrecokg;
+	@Getter @Setter protected double totalPrecoarroba;
+	CalculoPreco cp = new CalculoPreco();
+	
 	
 	
 	public void PreencheAnimal(ArrayList<Object> animal) {
@@ -24,7 +29,7 @@ public class Relatorios {
 		double contKg = 0;
 		double contArroba = 0;
 		
-		
+		//obtendo os valores dos animais
 		this.totalAnimais = animais.size()/5;
 		
 		for(int i = 0; i<animais.size(); i++) {
@@ -41,7 +46,7 @@ public class Relatorios {
 			contKg = contKg + p.getPesoKg();
 			contArroba = contArroba + p.getPesoArroba();
 		}
-		//setando os contadores
+		//colocando nas variaveis
 		this.TotalKg = contKg;
 		this.TotalArroba = contArroba;
 		this.quantMachos = contM;
@@ -49,8 +54,33 @@ public class Relatorios {
 		
 	}
 	
-	public void PreencheVacina() {
+	public void PreencheVacina(ArrayList<Object> vacinas, ArrayList<Object> agendados) {
+		int contVacinados = 0;
+		int contFaltaVacinar = 0;
 		
+		//obtendo a contagem
+		for(Object obj : vacinas) {
+			contVacinados++;
+		}
+		for(Object obj : agendados) {
+			contFaltaVacinar++;
+		}
+		//colocando nas variaveis
+		this.quantVacinado = (contVacinados/totalAnimais)*100;
+		this.quantFaltaVacinar = (contFaltaVacinar/totalAnimais)*100;
+	}
+	
+	public void PreenchePreco(ArrayList<Object> animal) {
+		double contaprecokg = 0;
+		double contaprecoarroba = 0;
+		
+		for (int i = 1; i < animais.size(); i = i + 6) {
+			Peso p = new Peso((double) animais.get(i), (double) animais.get(i + 1));
+			contaprecokg = contaprecokg + p.getPesoKg();
+			contaprecoarroba = contaprecoarroba + p.getPesoArroba();
+		}
+		this.totalPrecokg = cp.calculaPrecoKg(contaprecokg);
+		this.totalPrecoarroba = cp.calculaPrecoArroba(contaprecoarroba);
 	}
 	
 }
