@@ -1,8 +1,10 @@
 package Dados;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor 
 public class Peso {
 	@Getter @Setter private double pesoArroba;
 	@Getter @Setter private double pesoKg;

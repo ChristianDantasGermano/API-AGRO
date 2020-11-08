@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @NoArgsConstructor @AllArgsConstructor 
 public abstract class Animal {
-	@Getter protected double registro;
+	@Getter @Setter protected double registro;
 	@Getter @Setter protected Peso peso;
 	@Getter @Setter protected String raca;
 	@Getter @Setter protected String genero;

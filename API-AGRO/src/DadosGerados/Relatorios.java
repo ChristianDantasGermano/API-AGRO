@@ -57,7 +57,7 @@ public class Relatorios {
 	public void PreencheVacina(ArrayList<Object> vacinas, ArrayList<Object> agendados) {
 		int contVacinados = 0;
 		int contFaltaVacinar = 0;
-		
+		/*
 		//obtendo a contagem
 		for(Object obj : vacinas) {
 			contVacinados++;
@@ -65,6 +65,7 @@ public class Relatorios {
 		for(Object obj : agendados) {
 			contFaltaVacinar++;
 		}
+		*/
 		//colocando nas variaveis
 		this.quantVacinado = (contVacinados/totalAnimais)*100;
 		this.quantFaltaVacinar = (contFaltaVacinar/totalAnimais)*100;
