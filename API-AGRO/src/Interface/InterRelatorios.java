@@ -1,6 +1,7 @@
 package Interface;
 
 public class InterRelatorios extends InterfaceTexto{
+	/*
 	//Relatorios rl = new Relatorios();
 	public InterRelatorios() {
 		System.out.print("##----------Relatórios---------##\n\n");
@@ -26,5 +27,5 @@ public class InterRelatorios extends InterfaceTexto{
 		//rl.getTotalPrecoarroba()
 
 	}
-
+	*/
 }

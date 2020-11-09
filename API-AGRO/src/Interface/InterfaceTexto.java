@@ -2,21 +2,20 @@ package Interface;
 
 import java.util.Scanner;
 
-import Repository.AnimalRepository;
-import Repository.CartaoVacinaRepository;
-import Repository.VacinaRepository;
+import Repository.*;
 
-public class InterfaceTexto {
+public class InterfaceTexto{
+	
 	public static AnimalRepository animais = new AnimalRepository();
 	public static CartaoVacinaRepository cartaoVacina = new CartaoVacinaRepository();
 	public static VacinaRepository vacina = new VacinaRepository();
 	
-	protected InterAnimais Intanimais = new InterAnimais();
-	protected InterVacinas Intvacinas = new InterVacinas(); 
-	protected InterVendas Intvendas = new InterVendas();
-	protected InterRelatorios Intrelatorios = new InterRelatorios();
-	protected InterCartaoVacinas aIntgendaVacinas= new InterCartaoVacinas(); 
-
+	protected InterAnimais intanimais;
+	protected InterVacinas intvacinas; 
+	protected InterVendas intvendas;
+	protected InterRelatorios intrelatorios;
+	protected InterCartaoVacinas intCartaoVacinas; 
+	
 	protected Scanner ler = new Scanner(System.in);
 	protected int valorInt;
 	protected String valorTexto;
@@ -24,9 +23,14 @@ public class InterfaceTexto {
 	protected String[] valorArrayTexto;
 	protected int[] valorArrayInt;
 	protected double[] valorArrayDouble;
-
+	
 	public void MenuPrincipal() {
-		ler.nextLine();
+		intanimais = new InterAnimais();
+		intvacinas = new InterVacinas(); 
+		intvendas = new InterVendas();
+		intrelatorios = new InterRelatorios();
+		intCartaoVacinas = new InterCartaoVacinas();
+				
 		System.out.print("##-------------API-AGRO------------##\n\n");
 		System.out.print("|-----------------------------------|\n");
 		System.out.print("| Opção 1 - Animais                 |\n");
@@ -41,14 +45,14 @@ public class InterfaceTexto {
 
 		switch (valorInt) {
 			case 1:
-				Intanimais.MenuAnimais();
+			    intanimais.MenuAnimais();
 				break;
 			case 2:
 				break;
 			case 3:
 				break;
 			case 4:
-				Intvacinas.MenuVacinas();
+				intvacinas.MenuVacinas();
 				break;
 			case 5:
 				//agendaVacinas.MenuAgendaVacina();

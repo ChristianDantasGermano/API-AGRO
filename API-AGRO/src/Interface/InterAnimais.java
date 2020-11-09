@@ -10,7 +10,8 @@ import Repository.CartaoVacinaRepository;
 import Repository.VacinaRepository;
 import Vacinacao.Vacina;
 
-public class InterAnimais extends InterfaceTexto {
+public class InterAnimais extends InterfaceTexto{
+	
 	protected Bovinos boi;
 	protected Suinos porco;
 	
@@ -99,7 +100,7 @@ public class InterAnimais extends InterfaceTexto {
 	private void AdcVacinaBoi(){
 		List<Vacina> vacinasBoi = new ArrayList<Vacina>();
 		
-		Intvacinas.ConVacinasBoi();
+		intvacinas.ConVacinasBoi();
 		System.out.print("Selecione as Vacinas já tomadas");
 		System.out.print("Digite o codigo da vacina(separa por espaços):");
 		valorTexto = ler.next();
@@ -116,7 +117,7 @@ public class InterAnimais extends InterfaceTexto {
 	private void AdcVacinaPorco(){
 		List<Vacina> vacinasPorco = new ArrayList<Vacina>();
 		
-		Intvacinas.ConVacinasPorco();
+		intvacinas.ConVacinasPorco();
 		System.out.print("Selecione as Vacinas já tomadas");
 		System.out.print("Digite o codigo da vacina(separa por espaços):");
 		valorTexto = ler.next();
@@ -130,6 +131,5 @@ public class InterAnimais extends InterfaceTexto {
 		System.out.print("Cadastrado com sucesso!");
 		MenuAnimais();
 	}
-
 
 }

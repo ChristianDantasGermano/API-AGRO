@@ -2,7 +2,7 @@ package Interface;
 
 public class InterCartaoVacinas extends InterAnimais{
 
-	public InterCartaoVacinas() {
+	public void EscolhaAnimal() {
 		System.out.print("##------------Cartão-Vacinas-------##\n\n");
 		System.out.print("|Escolha qual tipo de animal:       |\n");
 		System.out.print("| Opção 1 - Boi                     |\n");

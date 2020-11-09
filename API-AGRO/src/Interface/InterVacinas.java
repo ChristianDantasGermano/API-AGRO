@@ -5,7 +5,7 @@ import Vacinacao.VacinaBovino;
 import Vacinacao.VacinaSuino;
 
 public class InterVacinas extends InterfaceTexto{
-	
+
 	private static VacinaRepository vacinas = new VacinaRepository();
 	
 	public void MenuVacinas() {
