@@ -1,21 +1,28 @@
 package Interface;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Dados.Bovinos;
 import Dados.Suinos;
 import Repository.AnimalRepository;
+import Repository.CartaoVacinaRepository;
+import Repository.VacinaRepository;
+import Vacinacao.Vacina;
 
 public class InterAnimais extends InterfaceTexto {
-	private static AnimalRepository animais = new AnimalRepository(); ;
+	protected Bovinos boi;
+	protected Suinos porco;
 	
 	public void MenuAnimais() {
-		System.out.print("\n##----------Animais---------##\n\n");
-		System.out.print("|-----------------------------|\n");
-		System.out.print("| Opção 1 - CadastrarBoi      |\n");
-		System.out.print("| Opção 2 - CadastrarPorco    |\n");
-		System.out.print("| Opção 3 - ConsultarBois     |\n");
-		System.out.print("| Opção 4 - ConsultarPorcos   |\n");
-		System.out.print("| Opção 5 - Voltar            |\n");
-		System.out.print("|-----------------------------|\n");
+		System.out.print("\n##-----------Animais-------------##\n\n");
+		System.out.print("|-----------------------------------|\n");
+		System.out.print("| Opção 1 - CadastrarBoi            |\n");
+		System.out.print("| Opção 2 - CadastrarPorco          |\n");
+		System.out.print("| Opção 3 - ConsultarBois           |\n");
+		System.out.print("| Opção 4 - ConsultarPorcos         |\n");
+		System.out.print("| Opção 5 - Voltar                  |\n");
+		System.out.print("|-----------------------------------|\n");
 		System.out.print("Digite uma opção:");
 		valorInt = ler.nextInt();
 		switch (valorInt) {
@@ -43,15 +50,17 @@ public class InterAnimais extends InterfaceTexto {
 	private void CadBoi() {
 		System.out.print("##---------CAD-Bovino-------##\n\n");
 		Cad();
-		animais.setBois(valorArrayTexto, valorArrayDouble);
-		MenuAnimais();
+		boi = new Bovinos(valorArrayTexto[0],valorArrayTexto[1],valorArrayTexto[2]);
+		animais.setBois(valorArrayDouble,boi);
+		AdcVacinaBoi();
 	}
 	
 	private void CadSuino() {
 		System.out.print("##---------CAD-Suino-------##\n\n");
 		Cad();
-		animais.setSuinos(valorArrayTexto, valorArrayDouble);
-		MenuAnimais();
+		porco = new Suinos(valorArrayTexto[0],valorArrayTexto[1],valorArrayTexto[2]);
+		animais.setSuinos(valorArrayDouble, porco);
+		AdcVacinaPorco();
 	}
 	
 	private void Cad() {
@@ -69,22 +78,58 @@ public class InterAnimais extends InterfaceTexto {
 		valorArrayDouble[1] =  ler.nextDouble();	
 	}
 	
-	private void ConBois(){
+	protected void ConBois(){
 		System.out.print("##---------CON-Bovino-------##\n\n");
 		for(Bovinos obj: animais.getBois()) {
-			System.out.print("\nBoi: "+obj.getRegistro()+" "+obj.getRaca()+" "+obj.getGenero()+
+			System.out.print("\nBoi: codigo("+obj.getRegistro()+"):"+obj.getRaca()+" "+obj.getGenero()+
 					" "+obj.getDataNascimento()+" "+obj.getPesoKg()+"Kg "+obj.getPesoArroba()+"@ ");
 		}
 		MenuAnimais();			
 	}
 	
-	private void ConPorcos(){
+	protected void ConPorcos(){
 		System.out.print("##---------CON-Suínos-------##\n\n");
 		for(Suinos obj: animais.getSuinos()) {
-			System.out.print("\nPorco: "+obj.getRegistro()+" "+obj.getRaca()+" "+obj.getGenero()+
-					" "+obj.getDataNascimento()+" "+obj.getPesoKg()+"Kg "+obj.getPesoArroba()+"@ ");
+			System.out.print("\nPorco codigo("+obj.getRegistro()+"): "+obj.getRaca()+" "+obj.getGenero()+
+					" "+obj.getDataNascimento()+" "+obj.getPesoKg()+"Kg "+obj.getPesoArroba()+"@\n");
 		}
 		MenuAnimais();			
 	}
+	
+	private void AdcVacinaBoi(){
+		List<Vacina> vacinasBoi = new ArrayList<Vacina>();
+		
+		Intvacinas.ConVacinasBoi();
+		System.out.print("Selecione as Vacinas já tomadas");
+		System.out.print("Digite o codigo da vacina(separa por espaços):");
+		valorTexto = ler.next();
+		String valores[] = valorTexto.split("\s");
+		for(String var :valores) {
+			int temp = Integer.parseInt(var);
+			vacinasBoi.add(vacina.GetVacinaBovino(temp));
+		}
+		cartaoVacina.setCartaoVacina(boi, vacinasBoi);
+		System.out.print("Cadastrado com sucesso!");
+		MenuAnimais();
+	}
+	
+	private void AdcVacinaPorco(){
+		List<Vacina> vacinasPorco = new ArrayList<Vacina>();
+		
+		Intvacinas.ConVacinasPorco();
+		System.out.print("Selecione as Vacinas já tomadas");
+		System.out.print("Digite o codigo da vacina(separa por espaços):");
+		valorTexto = ler.next();
+		String valores[] = valorTexto.split("\s");
+		for(String var :valores) {
+			int temp = Integer.parseInt(var);
+			
+			vacinasPorco.add(vacina.GetVacinaSuino(temp));
+		}
+		cartaoVacina.setCartaoVacina(porco, vacinasPorco);
+		System.out.print("Cadastrado com sucesso!");
+		MenuAnimais();
+	}
+
 
 }

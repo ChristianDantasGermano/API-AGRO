@@ -2,11 +2,20 @@ package Interface;
 
 import java.util.Scanner;
 
+import Repository.AnimalRepository;
+import Repository.CartaoVacinaRepository;
+import Repository.VacinaRepository;
+
 public class InterfaceTexto {
-	protected InterAnimais animais;
-	protected InterVacinas vacinas; 
-	protected InterVendas vendas; 
-	protected InterRelatorios relatorios; 
+	public static AnimalRepository animais = new AnimalRepository();
+	public static CartaoVacinaRepository cartaoVacina = new CartaoVacinaRepository();
+	public static VacinaRepository vacina = new VacinaRepository();
+	
+	protected InterAnimais Intanimais = new InterAnimais();
+	protected InterVacinas Intvacinas = new InterVacinas(); 
+	protected InterVendas Intvendas = new InterVendas();
+	protected InterRelatorios Intrelatorios = new InterRelatorios();
+	protected InterCartaoVacinas aIntgendaVacinas= new InterCartaoVacinas(); 
 
 	protected Scanner ler = new Scanner(System.in);
 	protected int valorInt;
@@ -17,32 +26,34 @@ public class InterfaceTexto {
 	protected double[] valorArrayDouble;
 
 	public void MenuPrincipal() {
-		System.out.print("##----------API-AGRO---------##\n\n");
-		System.out.print("|-----------------------------|\n");
-		System.out.print("| Opção 1 - Animais           |\n");
-		System.out.print("| Opção 2 - Vacinação         |\n");
-		System.out.print("| Opção 3 - Vendas            |\n");
-		System.out.print("| Opção 4 - Relatórios        |\n");
-		System.out.print("| Opção 5 - Sair              |\n");
-		System.out.print("|-----------------------------|\n");
+		ler.nextLine();
+		System.out.print("##-------------API-AGRO------------##\n\n");
+		System.out.print("|-----------------------------------|\n");
+		System.out.print("| Opção 1 - Animais                 |\n");
+		System.out.print("| Opção 2 - Relatórios              |\n");
+		System.out.print("| Opção 3 - Vendas                  |\n");
+		System.out.print("| Opção 4 - Vacinação               |\n");
+		System.out.print("| Opção 5 - Agendar Vacinação       |\n");
+		System.out.print("| Opção 6 - Sair                    |\n");
+		System.out.print("|-----------------------------------|\n");
 		System.out.print("Digite uma opção:");
 		valorInt = ler.nextInt();
 
 		switch (valorInt) {
 			case 1:
-				animais = new InterAnimais();
-				animais.MenuAnimais();
+				Intanimais.MenuAnimais();
 				break;
 			case 2:
-				vacinas = new InterVacinas();
 				break;
 			case 3:
-				vendas = new InterVendas();
 				break;
 			case 4:
-				relatorios = new InterRelatorios();
+				Intvacinas.MenuVacinas();
 				break;
 			case 5:
+				//agendaVacinas.MenuAgendaVacina();
+				break;
+			case 6:
 				System.out.print("\nSair");
 				break;
 			default:

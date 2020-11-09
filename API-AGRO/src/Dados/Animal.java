@@ -1,11 +1,10 @@
 package Dados;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor @AllArgsConstructor 
+@NoArgsConstructor
 public abstract class Animal {
 	@Getter @Setter protected int registro;
 	@Setter protected Peso peso = new Peso();
@@ -19,5 +18,11 @@ public abstract class Animal {
 	
     public double getPesoArroba() {
     	return peso.getPesoArroba();
+	}
+
+	public Animal(String raca, String genero, String dataNascimento) {
+		this.raca = raca;
+		this.genero = genero;
+		this.dataNascimento = dataNascimento;
 	}
 }

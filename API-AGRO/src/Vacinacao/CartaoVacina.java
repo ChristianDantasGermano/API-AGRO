@@ -11,23 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CartaoVacina {
 	@Getter @Setter private Animal animal;
-	private List<Vacina> vacinas = new ArrayList<Vacina>();
-	private List<AgendaVacina> vacinasAgendadas = new ArrayList<AgendaVacina>();
-
-	public CartaoVacina(Animal animal, List<Vacina> vacinas, List<AgendaVacina> vacinasAgendadas) {
-		this.animal = animal;
-		this.vacinas.addAll(vacinas);
-		this.vacinasAgendadas.addAll(vacinasAgendadas);
-	}
-
-
-	public List<Vacina> getVacinas() {
-		return vacinas;
-	}
-
-	public List<AgendaVacina> getvacinasAgendadas() {
-		return vacinasAgendadas;
-	}
+	@Getter private List<Vacina> vacinas = new ArrayList<Vacina>();
+	@Getter private List<AgendaVacina> vacinasAgendadas = new ArrayList<AgendaVacina>();
 
 	public void setVacinas(List<Vacina> vacinas) {
 		this.vacinas.addAll(vacinas);

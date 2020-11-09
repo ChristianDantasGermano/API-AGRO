@@ -18,20 +18,43 @@ public class AnimalRepository {
 	public AnimalRepository() {
 		regBoi=0;
 		regSuino=0;
-	}	
+	}
 	
-	public void setBois(String[] valor,double[] valorNum) {
+	public Bovinos GetBovino(int index) {
+		for(Bovinos obj : bois) {
+			if(obj.getRegistro() == index){
+				return obj;
+			}
+		}
+		System.out.println("Erro");
+		return bois.get(index);
+	}
+	
+	public Suinos GetSuino(int index) {
+		for(Suinos obj : suinos) {
+			if(obj.getRegistro() == index){
+				return obj;
+			}
+		}
+		System.out.println("Erro");
+		return suinos.get(index);
+	}
+
+	public void setBois(double[] valorNum,Bovinos obj) {
 		Peso peso = new Peso(valorNum[0],valorNum[1]);
-		Bovinos obj = new Bovinos(regBoi,peso,valor[0],valor[1],valor[2]);
+		obj.setPeso(peso);
+		obj.setRegistro(regBoi);
 		regBoi++; 
 		bois.add(obj);
 	}
 	
-	public void setSuinos(String[] valor,double[] valorNum) {
+	public void setSuinos(double[] valorNum,Suinos obj) {
 		Peso peso = new Peso(valorNum[0],valorNum[1]);
-		Suinos obj = new Suinos(regSuino,peso,valor[0],valor[1],valor[2]);
+		obj.setPeso(peso);
+		obj.setRegistro(regSuino);
 		regSuino++;
 		suinos.add(obj);
 	}
+	
 }
  
