@@ -1,7 +1,11 @@
 package Interface;
 
-public class InterCartaoVacinas extends InterAnimais{
+import Dados.Animal;
+import Vacinacao.Vacina;
 
+public class InterCartaoVacinas extends InterAnimais{
+	private	Animal ani;
+		
 	public void EscolhaAnimal() {
 		System.out.print("##------------Cartão-Vacinas-------##\n\n");
 		System.out.print("|Escolha qual tipo de animal:       |\n");
@@ -30,18 +34,18 @@ public class InterCartaoVacinas extends InterAnimais{
 	private void EscolherAnimalBoi() {
 		System.out.print("Escolha qual boi:");
 		ConBois();
-		System.out.print("Digite o codigo:");
+		System.out.print("\nDigite o codigo:");
 		valorInt = ler.nextInt();
-		boi = animais.GetBovino(valorInt);
+		ani = animais.GetBovino(valorInt);
 		MenuCartaoVacinas();
 	}
 	
 	private void EscolherAnimalPorco() {
 		System.out.print("Escolha qual boi:");
 		ConPorcos();
-		System.out.print("Digite o codigo:");
+		System.out.print("\nDigite o codigo:");
 		valorInt = ler.nextInt();
-		porco = animais.GetSuino(valorInt);
+		ani = animais.GetSuino(valorInt);
 		MenuCartaoVacinas();
 	}
 	
@@ -58,7 +62,7 @@ public class InterCartaoVacinas extends InterAnimais{
 		valorInt = ler.nextInt();
 		switch (valorInt) {
 		case 1:
-			//CadVacinasBoi();
+			VacinasTomadas();
 			break;
 		case 2:
 			//CadVacinasPorco();
@@ -76,6 +80,14 @@ public class InterCartaoVacinas extends InterAnimais{
 			System.out.print("\nOpção Incorreta!");
 			break;
 		}
+	}
+	
+	public void VacinasTomadas() {
+		System.out.print("##----------VACINAS----------##\n\n");
+		for(Vacina obj: cartaoVacina.VacinasTomadas(ani)) {
+			System.out.print("\nVacina codigo("+obj.getCod()+"): "+obj.getNome()+" "+obj.getDescricao()+" "+obj.getObservacao()+"\n");
+		}
+		MenuCartaoVacinas();
 	}
 
 }

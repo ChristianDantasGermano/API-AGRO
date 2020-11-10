@@ -15,6 +15,21 @@ public class CartaoVacinaRepository {
 		CartaoVacina obj = new CartaoVacina();
 		obj.setAnimal(animal);
 		obj.setVacinas(vacinas);
+		cartaoVacina.add(obj);
+	}
+	
+	public List<Vacina> VacinasTomadas(Animal obj){
+		//System.out.println(obj.getRegistro());1
+		//System.out.println(cartaoVacina);
+		for(CartaoVacina cartao: cartaoVacina) {
+			//System.out.println("Dentro for: "+obj.getRegistro());
+			//System.out.println("Dentro for: "+cartao.getAnimal().getRegistro());
+			if(cartao.getAnimal().getRegistro() == obj.getRegistro()) {
+				return cartao.getVacinas();
+			}
+		}
+		System.out.println("Nada encontrado!!!");
+		return null;
 	}
 	
 }

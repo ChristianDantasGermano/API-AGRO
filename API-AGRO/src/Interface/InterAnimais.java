@@ -5,10 +5,9 @@ import java.util.List;
 
 import Dados.Bovinos;
 import Dados.Suinos;
-import Repository.AnimalRepository;
-import Repository.CartaoVacinaRepository;
-import Repository.VacinaRepository;
 import Vacinacao.Vacina;
+import Vacinacao.VacinaBovino;
+import Vacinacao.VacinaSuino;
 
 public class InterAnimais extends InterfaceTexto{
 	
@@ -35,9 +34,11 @@ public class InterAnimais extends InterfaceTexto{
 			break;
 		case 3:
 			ConBois();
+			MenuAnimais();
 			break;
 		case 4:
 			ConPorcos();
+			MenuAnimais();
 			break;
 		case 5:
 			MenuPrincipal();
@@ -80,34 +81,32 @@ public class InterAnimais extends InterfaceTexto{
 	}
 	
 	protected void ConBois(){
-		System.out.print("##---------CON-Bovino-------##\n\n");
+		System.out.print("\n##---------CON-Bovino-------##\n\n");
 		for(Bovinos obj: animais.getBois()) {
 			System.out.print("\nBoi: codigo("+obj.getRegistro()+"):"+obj.getRaca()+" "+obj.getGenero()+
 					" "+obj.getDataNascimento()+" "+obj.getPesoKg()+"Kg "+obj.getPesoArroba()+"@ ");
-		}
-		MenuAnimais();			
+		}			
 	}
 	
 	protected void ConPorcos(){
-		System.out.print("##---------CON-Suínos-------##\n\n");
+		System.out.print("\n##---------CON-Suínos-------##\n\n");
 		for(Suinos obj: animais.getSuinos()) {
 			System.out.print("\nPorco codigo("+obj.getRegistro()+"): "+obj.getRaca()+" "+obj.getGenero()+
 					" "+obj.getDataNascimento()+" "+obj.getPesoKg()+"Kg "+obj.getPesoArroba()+"@\n");
-		}
-		MenuAnimais();			
+		}		
 	}
 	
 	private void AdcVacinaBoi(){
 		List<Vacina> vacinasBoi = new ArrayList<Vacina>();
 		
-		intvacinas.ConVacinasBoi();
-		System.out.print("Selecione as Vacinas já tomadas");
-		System.out.print("Digite o codigo da vacina(separa por espaços):");
+		ConVacinasBoi();
+		System.out.print("\nSelecione as Vacinas já tomadas");
+		System.out.print("\nDigite o codigo da vacina(separa por ';'):");
 		valorTexto = ler.next();
-		String valores[] = valorTexto.split("\s");
+		String valores[] = valorTexto.split(";");
 		for(String var :valores) {
 			int temp = Integer.parseInt(var);
-			vacinasBoi.add(vacina.GetVacinaBovino(temp));
+			vacinasBoi.add(vacinas.GetVacinaBovino(temp));
 		}
 		cartaoVacina.setCartaoVacina(boi, vacinasBoi);
 		System.out.print("Cadastrado com sucesso!");
@@ -117,19 +116,33 @@ public class InterAnimais extends InterfaceTexto{
 	private void AdcVacinaPorco(){
 		List<Vacina> vacinasPorco = new ArrayList<Vacina>();
 		
-		intvacinas.ConVacinasPorco();
-		System.out.print("Selecione as Vacinas já tomadas");
-		System.out.print("Digite o codigo da vacina(separa por espaços):");
+		ConVacinasPorco();
+		System.out.print("\nSelecione as Vacinas já tomadas");
+		System.out.print("\nDigite o codigo da vacina(separa por ';'):");
 		valorTexto = ler.next();
-		String valores[] = valorTexto.split("\s");
+		String valores[] = valorTexto.split(";");
 		for(String var :valores) {
 			int temp = Integer.parseInt(var);
 			
-			vacinasPorco.add(vacina.GetVacinaSuino(temp));
+			vacinasPorco.add(vacinas.GetVacinaSuino(temp));
 		}
 		cartaoVacina.setCartaoVacina(porco, vacinasPorco);
-		System.out.print("Cadastrado com sucesso!");
+		System.out.print("\nCadastrado com sucesso!");
 		MenuAnimais();
+	}
+	
+	protected void ConVacinasBoi() {
+		System.out.print("\n##----------VACINAS---------##\n\n");
+		for(VacinaBovino obj: vacinas.getBois()) {
+			System.out.print("\nVacina codigo("+obj.getCod()+"): "+obj.getNome()+" "+obj.getDescricao()+" "+obj.getObservacao()+"\n");
+		}	
+	}
+	
+	protected void ConVacinasPorco() {
+		System.out.print("\n##----------VACINAS---------##\n\n");
+		for(VacinaSuino obj: vacinas.getSuinos()) {
+			System.out.print("\nVacina codigo("+obj.getCod()+"): "+obj.getNome()+" "+obj.getDescricao()+" "+obj.getObservacao()+"\n");
+		}
 	}
 
 }

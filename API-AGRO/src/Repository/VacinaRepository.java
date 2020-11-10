@@ -14,8 +14,25 @@ public class VacinaRepository {
 	private int codePorco;
 	
 	public VacinaRepository() {
-		codeBoi=0;
-		codePorco=0;
+		codeBoi=3;
+		codePorco=3;
+		
+		VacinaBovino bov1 = new VacinaBovino(0,"Brucelose","Uso entre 3 e 8 meses","somente em fêmeas");
+		VacinaBovino bov2 = new VacinaBovino(1,"Clostridioses","Causa mortalidade rapida","A parti 2 meses");
+		VacinaBovino bov3 = new VacinaBovino(2,"Leptospirose","Aplica entre 3 e 6 meses de idade","A cada 6 meses");
+		
+		VacinaSuino sui1 = new VacinaSuino(0,"Rinite atrófica","Espirros","Dada com 7 dias");
+		VacinaSuino sui2 = new VacinaSuino(1,"Pleuropneumonia","Perda de peso","aplica 4 e 5 semnas");
+		VacinaSuino sui3 = new VacinaSuino(2,"Leptospirose","Abordo","1ª dose no desmame");
+		
+		bois.add(bov1);
+		bois.add(bov2);
+		bois.add(bov3);
+		
+		suinos.add(sui1);
+		suinos.add(sui2);
+		suinos.add(sui3);
+			
 	}
 	
 	public VacinaBovino GetVacinaBovino(int index) {

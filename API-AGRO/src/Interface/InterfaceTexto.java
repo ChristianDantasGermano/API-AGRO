@@ -8,7 +8,7 @@ public class InterfaceTexto{
 	
 	public static AnimalRepository animais = new AnimalRepository();
 	public static CartaoVacinaRepository cartaoVacina = new CartaoVacinaRepository();
-	public static VacinaRepository vacina = new VacinaRepository();
+	public static VacinaRepository vacinas = new VacinaRepository();
 	
 	protected InterAnimais intanimais;
 	protected InterVacinas intvacinas; 
@@ -37,7 +37,7 @@ public class InterfaceTexto{
 		System.out.print("| Opção 2 - Relatórios              |\n");
 		System.out.print("| Opção 3 - Vendas                  |\n");
 		System.out.print("| Opção 4 - Vacinação               |\n");
-		System.out.print("| Opção 5 - Agendar Vacinação       |\n");
+		System.out.print("| Opção 5 - Cartão Vacina           |\n");
 		System.out.print("| Opção 6 - Sair                    |\n");
 		System.out.print("|-----------------------------------|\n");
 		System.out.print("Digite uma opção:");
@@ -55,7 +55,7 @@ public class InterfaceTexto{
 				intvacinas.MenuVacinas();
 				break;
 			case 5:
-				//agendaVacinas.MenuAgendaVacina();
+				intCartaoVacinas.EscolhaAnimal();
 				break;
 			case 6:
 				System.out.print("\nSair");

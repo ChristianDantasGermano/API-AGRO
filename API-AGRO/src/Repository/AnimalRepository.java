@@ -27,7 +27,7 @@ public class AnimalRepository {
 			}
 		}
 		System.out.println("Erro");
-		return bois.get(index);
+		return null;
 	}
 	
 	public Suinos GetSuino(int index) {
@@ -37,7 +37,7 @@ public class AnimalRepository {
 			}
 		}
 		System.out.println("Erro");
-		return suinos.get(index);
+		return null;
 	}
 
 	public void setBois(double[] valorNum,Bovinos obj) {

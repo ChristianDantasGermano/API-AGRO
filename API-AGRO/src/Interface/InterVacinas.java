@@ -5,8 +5,6 @@ import Vacinacao.VacinaBovino;
 import Vacinacao.VacinaSuino;
 
 public class InterVacinas extends InterfaceTexto{
-
-	private static VacinaRepository vacinas = new VacinaRepository();
 	
 	public void MenuVacinas() {
 		System.out.print("##-------------Vacinas-------------##\n\n");
@@ -65,8 +63,9 @@ public class InterVacinas extends InterfaceTexto{
 		MenuVacinas();
 	}
     
-    protected void ConVacinasBoi() {
+	protected void ConVacinasBoi() {
 		System.out.print("##------CON-VACINAS-BOIS-----##\n\n");
+		System.out.print(vacinas.getBois());
 		for(VacinaBovino obj: vacinas.getBois()) {
 			System.out.print("\nVacina codigo("+obj.getCod()+"): "+obj.getNome()+" "+obj.getDescricao()+" "+obj.getObservacao()+"\n");
 		}
