@@ -1,6 +1,5 @@
 package Interface;
 
-import Repository.VacinaRepository;
 import Vacinacao.VacinaBovino;
 import Vacinacao.VacinaSuino;
 

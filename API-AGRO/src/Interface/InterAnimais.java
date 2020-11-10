@@ -55,6 +55,7 @@ public class InterAnimais extends InterfaceTexto{
 		boi = new Bovinos(valorArrayTexto[0],valorArrayTexto[1],valorArrayTexto[2]);
 		animais.setBois(valorArrayDouble,boi);
 		AdcVacinaBoi();
+		MenuAnimais();
 	}
 	
 	private void CadSuino() {
@@ -63,6 +64,7 @@ public class InterAnimais extends InterfaceTexto{
 		porco = new Suinos(valorArrayTexto[0],valorArrayTexto[1],valorArrayTexto[2]);
 		animais.setSuinos(valorArrayDouble, porco);
 		AdcVacinaPorco();
+		MenuAnimais();
 	}
 	
 	private void Cad() {
@@ -96,7 +98,7 @@ public class InterAnimais extends InterfaceTexto{
 		}		
 	}
 	
-	private void AdcVacinaBoi(){
+	protected void AdcVacinaBoi(){
 		List<Vacina> vacinasBoi = new ArrayList<Vacina>();
 		
 		ConVacinasBoi();
@@ -110,10 +112,9 @@ public class InterAnimais extends InterfaceTexto{
 		}
 		cartaoVacina.setCartaoVacina(boi, vacinasBoi);
 		System.out.print("Cadastrado com sucesso!");
-		MenuAnimais();
 	}
 	
-	private void AdcVacinaPorco(){
+	protected void AdcVacinaPorco(){
 		List<Vacina> vacinasPorco = new ArrayList<Vacina>();
 		
 		ConVacinasPorco();
@@ -122,13 +123,11 @@ public class InterAnimais extends InterfaceTexto{
 		valorTexto = ler.next();
 		String valores[] = valorTexto.split(";");
 		for(String var :valores) {
-			int temp = Integer.parseInt(var);
-			
+			int temp = Integer.parseInt(var);			
 			vacinasPorco.add(vacinas.GetVacinaSuino(temp));
 		}
 		cartaoVacina.setCartaoVacina(porco, vacinasPorco);
 		System.out.print("\nCadastrado com sucesso!");
-		MenuAnimais();
 	}
 	
 	protected void ConVacinasBoi() {

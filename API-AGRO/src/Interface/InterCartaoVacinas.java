@@ -1,10 +1,12 @@
 package Interface;
 
 import Dados.Animal;
+import Vacinacao.AgendaVacina;
 import Vacinacao.Vacina;
 
 public class InterCartaoVacinas extends InterAnimais{
 	private	Animal ani;
+	private int escAnimal;
 		
 	public void EscolhaAnimal() {
 		System.out.print("##------------Cartão-Vacinas-------##\n\n");
@@ -37,6 +39,7 @@ public class InterCartaoVacinas extends InterAnimais{
 		System.out.print("\nDigite o codigo:");
 		valorInt = ler.nextInt();
 		ani = animais.GetBovino(valorInt);
+		escAnimal=0;
 		MenuCartaoVacinas();
 	}
 	
@@ -46,6 +49,7 @@ public class InterCartaoVacinas extends InterAnimais{
 		System.out.print("\nDigite o codigo:");
 		valorInt = ler.nextInt();
 		ani = animais.GetSuino(valorInt);
+		escAnimal=1;
 		MenuCartaoVacinas();
 	}
 	
@@ -53,10 +57,9 @@ public class InterCartaoVacinas extends InterAnimais{
 		System.out.print("##------------Cartão-Vacinas--------##\n\n");
 		System.out.print("|------------------------------------|\n");
 		System.out.print("| Opção 1 - Vacinas Tomadas          |\n");
-		System.out.print("| Opção 2 - Adicionar Vacinas Tomadas|\n");
-		System.out.print("| Opção 3 - Agendar Vacina           |\n");
-		System.out.print("| Opção 4 - Vacinas Agendadas        |\n");
-		System.out.print("| Opção 5 - Voltar                   |\n");
+		System.out.print("| Opção 2 - Agendar Vacina           |\n");
+		System.out.print("| Opção 3 - Vacinas Agendadas        |\n");
+		System.out.print("| Opção 4 - Voltar                   |\n");
 		System.out.print("|------------------------------------|\n");
 		System.out.print("Digite uma opção:");
 		valorInt = ler.nextInt();
@@ -65,15 +68,12 @@ public class InterCartaoVacinas extends InterAnimais{
 			VacinasTomadas();
 			break;
 		case 2:
-			//CadVacinasPorco();
+			AgendarVacina();
 			break;
 		case 3:
-			//ConVacinasBoi();
+			VacinasAgendadas();
 			break;
 		case 4:
-			//ConVacinasPorco();
-			break;
-		case 5:
 			MenuPrincipal();
 			break;
 		default:
@@ -82,6 +82,38 @@ public class InterCartaoVacinas extends InterAnimais{
 		}
 	}
 	
+	public void AgendarVacina() {
+		System.out.print("##-------AGENDA-VACINAS-------##\n\n");
+		System.out.print("\nDigite a data de agendamento:");
+		valorTexto = ler.next();
+		System.out.print("\nSelecione a Vacina");
+		if(escAnimal == 0) {
+			ConVacinasBoi();
+		}
+		else {
+			ConVacinasPorco();
+		}
+		System.out.print("\nDigite o código da Vacina:");
+		valorInt = ler.nextInt();
+		if(escAnimal == 0) {
+			cartaoVacina.AgendaVacina(ani,vacinas.GetVacinaBovino(valorInt),valorTexto);
+		}
+		else {
+			cartaoVacina.AgendaVacina(ani,vacinas.GetVacinaSuino(valorInt),valorTexto);
+		}
+		MenuCartaoVacinas();
+	}
+	
+	public void VacinasAgendadas() {
+		System.out.print("##------VACINAS-AGENDADAS------##\n\n");
+		for(AgendaVacina obj: cartaoVacina.VacinasAgendads(ani)) {
+			System.out.print("\nVacina codigo("+obj.getVacina().getCod()+"): "+obj.getVacina().getNome()+" Agenda para data:"+obj.getDataVacinacao()+"\n");
+		}
+		MenuCartaoVacinas();
+	}
+	
+	
+	
 	public void VacinasTomadas() {
 		System.out.print("##----------VACINAS----------##\n\n");
 		for(Vacina obj: cartaoVacina.VacinasTomadas(ani)) {
@@ -89,5 +121,16 @@ public class InterCartaoVacinas extends InterAnimais{
 		}
 		MenuCartaoVacinas();
 	}
+	
+	public void AdcVacinasTomadas() {
+		if(escAnimal == 0) {
+			AdcVacinaBoi();
+		}
+		else {
+			AdcVacinaPorco();
+		}
+		MenuCartaoVacinas();
+	}
+	
 
 }
