@@ -49,6 +49,7 @@ public class InterfaceTexto{
 			    intanimais.MenuAnimais();
 				break;
 			case 2:
+				intrelatorios.MenuRelatorio();
 				break;
 			case 3:
 				intvendas.MenuVendas();

@@ -15,8 +15,6 @@ public class InterVendas extends InterAnimais{
 			System.out.print("| Opção 1 - VenderBoi         |\n");
 			System.out.print("| Opção 2 - VenderPorco       |\n");
 			System.out.print("| Opção 3 - Histórico Vendas  |\n");
-			System.out.print("| Opção 4 - Setar Cotação KG  |\n");
-			System.out.print("| Opção 5 - Setar Cotação @   |\n");
 			System.out.print("| Opção 4 - Voltar            |\n");
 			System.out.print("|-----------------------------|\n");
 			System.out.print("Digite uma opção:");

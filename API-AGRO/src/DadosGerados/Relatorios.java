@@ -1,9 +1,13 @@
 package DadosGerados;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Dados.Peso;
 import Financeiro.CalculoPreco;
+import Vacinacao.AgendaVacina;
+import Vacinacao.CartaoVacina;
+import Vacinacao.Vacina;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,17 +20,16 @@ public class Relatorios {
 	@Getter @Setter protected double TotalArroba;
 	@Getter @Setter protected int quantMachos;
 	@Getter @Setter protected int quantFemeas;
-	@Getter @Setter protected int quantVacinado;
-	@Getter @Setter protected int quantFaltaVacinar;
+	@Getter @Setter protected float quantVacinado;
+	@Getter @Setter protected float quantFaltaVacinar;
 	@Getter @Setter protected double totalPrecokg;
 	@Getter @Setter protected double totalPrecoarroba;
 	CalculoPreco cp = new CalculoPreco();
 	
 	
-	public Relatorios(ArrayList<Object> animal, ArrayList<Object> vacinas,
-			ArrayList<Object> agendados) {
+	public Relatorios(ArrayList<Object> animal, List<CartaoVacina> vacinas) {
 		PreencheAnimal(animal);
-		PreencheVacina(vacinas, agendados);
+		PreencheVacina(vacinas);
 		PreenchePreco(animal);
 	}
 	public void PreencheAnimal(ArrayList<Object> animal) {
@@ -39,16 +42,17 @@ public class Relatorios {
 		//obtendo os valores dos animais
 		this.totalAnimais = animais.size()/5;
 		
-		for(int i = 0; i<animais.size(); i++) {
-			if(animais.get(i) == "M") {
+		for(int i = 2; i<animais.size(); i = i + 6) {
+			System.out.println("Gênero do animal:"+animais.get(i));
+			if(animais.get(i).equals("M") || animais.get(i).equals("m")) {
 				contM++;
 			}
-			else if(animais.get(i) == "F") {
+			else if(animais.get(i).equals("F") || animais.get(i).equals("f")) {
 				contF++;
 			}
 		}
 
-		for(int i = 1; i<animais.size(); i = i+6) {
+		for(int i = 4; i<animais.size(); i = i+6) {
 			Peso p = new Peso((double)animais.get(i), (double) animais.get(i+1));
 			contKg = contKg + p.getPesoKg();
 			contArroba = contArroba + p.getPesoArroba();
@@ -57,31 +61,29 @@ public class Relatorios {
 		this.TotalKg = contKg;
 		this.TotalArroba = contArroba;
 		this.quantMachos = contM;
-		this.quantFemeas = contF;
-		
+		this.quantFemeas = contF;		
 	}
 	
-	public void PreencheVacina(ArrayList<Object> vacinas, ArrayList<Object> agendados) {
-		int contVacinados = 0;
-		int contFaltaVacinar = 0;
-		
-		//obtendo a contagem
-		for(Object obj : vacinas) {
-			contVacinados++;
+	public void PreencheVacina(List<CartaoVacina> vacinas) {
+		float contVacinados = 0;
+		float contFaltaVacinar = 0;	
+		for(CartaoVacina objC : vacinas) {
+			for(@SuppressWarnings("unused") Vacina objV : objC.getVacinas()) {
+				contVacinados++;
+			}
+			for(@SuppressWarnings("unused") AgendaVacina objV : objC.getVacinasAgendadas()) {
+				contFaltaVacinar++;
+			}			
 		}
-		for(Object obj : agendados) {
-			contFaltaVacinar++;
-		}
-		//colocando nas variaveis
-		this.quantVacinado = (contVacinados/totalAnimais)*100;
-		this.quantFaltaVacinar = (contFaltaVacinar/totalAnimais)*100;
+		this.quantVacinado = ((contVacinados/(contVacinados+contFaltaVacinar))*100);
+		this.quantFaltaVacinar = (contFaltaVacinar/(contVacinados+contFaltaVacinar))*100;
 	}
 	
 	public void PreenchePreco(ArrayList<Object> animal) {
 		double contaprecokg = 0;
 		double contaprecoarroba = 0;
 		
-		for (int i = 1; i < animais.size(); i = i + 6) {
+		for (int i = 4; i < animais.size(); i = i + 6) {
 			Peso p = new Peso((double) animais.get(i), (double) animais.get(i + 1));
 			contaprecokg = contaprecokg + p.getPesoKg();
 			contaprecoarroba = contaprecoarroba + p.getPesoArroba();
