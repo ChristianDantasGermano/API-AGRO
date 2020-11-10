@@ -9,6 +9,7 @@ public class InterfaceTexto{
 	public static AnimalRepository animais = new AnimalRepository();
 	public static CartaoVacinaRepository cartaoVacina = new CartaoVacinaRepository();
 	public static VacinaRepository vacinas = new VacinaRepository();
+	public static VendaRepository vendas = new VendaRepository();
 	
 	protected InterAnimais intanimais;
 	protected InterVacinas intvacinas; 
@@ -50,6 +51,7 @@ public class InterfaceTexto{
 			case 2:
 				break;
 			case 3:
+				intvendas.MenuVendas();
 				break;
 			case 4:
 				intvacinas.MenuVacinas();

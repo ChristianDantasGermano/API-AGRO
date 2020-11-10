@@ -1,6 +1,7 @@
 package Repository;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import Dados.Bovinos;
@@ -54,6 +55,26 @@ public class AnimalRepository {
 		obj.setRegistro(regSuino);
 		regSuino++;
 		suinos.add(obj);
+	}
+	
+	public void EliminarBois(List<Bovinos> boi) {
+		for(Iterator<Bovinos> iterator = bois.iterator(); iterator.hasNext();) {
+			for(Bovinos objEx: boi) {
+				if(iterator.next().getRegistro() == objEx.getRegistro()) {
+					iterator.remove();
+				}
+			}
+		}
+	}
+	
+	public void EliminarPorcos(List<Suinos> porco) {
+		for(Iterator<Suinos> iterator = suinos.iterator(); iterator.hasNext();) {
+			for(Suinos objEx: porco) {
+				if(iterator.next().getRegistro() == objEx.getRegistro()) {
+					iterator.remove();
+				}
+			}
+		}
 	}
 	
 }

@@ -6,6 +6,7 @@ import lombok.Setter;
 
 @NoArgsConstructor
 public abstract class Animal {
+	
 	@Getter @Setter protected int registro;
 	@Setter protected Peso peso = new Peso();
 	@Getter @Setter protected String raca;

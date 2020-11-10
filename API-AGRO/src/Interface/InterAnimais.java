@@ -83,7 +83,7 @@ public class InterAnimais extends InterfaceTexto{
 	}
 	
 	protected void ConBois(){
-		System.out.print("\n##---------CON-Bovino-------##\n\n");
+		System.out.print("\n##------------Bois---------##\n\n");
 		for(Bovinos obj: animais.getBois()) {
 			System.out.print("\nBoi: codigo("+obj.getRegistro()+"):"+obj.getRaca()+" "+obj.getGenero()+
 					" "+obj.getDataNascimento()+" "+obj.getPesoKg()+"Kg "+obj.getPesoArroba()+"@ ");
@@ -91,7 +91,7 @@ public class InterAnimais extends InterfaceTexto{
 	}
 	
 	protected void ConPorcos(){
-		System.out.print("\n##---------CON-Suínos-------##\n\n");
+		System.out.print("\n##-----------Suínos--------##\n\n");
 		for(Suinos obj: animais.getSuinos()) {
 			System.out.print("\nPorco codigo("+obj.getRegistro()+"): "+obj.getRaca()+" "+obj.getGenero()+
 					" "+obj.getDataNascimento()+" "+obj.getPesoKg()+"Kg "+obj.getPesoArroba()+"@\n");

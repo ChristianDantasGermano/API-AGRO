@@ -1,44 +1,60 @@
 package Financeiro;
 
 import java.util.ArrayList;
-
 import java.util.Date;
+import java.util.List;
 
-import Dados.Peso;
-import lombok.AllArgsConstructor;
+import Dados.Animal;
+import Dados.Bovinos;
+import Dados.Suinos;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
 public class Venda {
-
-	@Getter @Setter private ArrayList<Object> animais = new ArrayList<Object>();
-	@Getter @Setter private ArrayList<Object> valorAnimalUni = new ArrayList<Object>();
-	@Getter @Setter private ArrayList<Object> valorTotal = new ArrayList<Object>();
-	@Getter @Setter private Date dataVenda;
-	@Getter @Setter private double valorArroba = 0;
-	@Getter @Setter private double valorKg = 0;
 	
-	CalculoPreco cp = new CalculoPreco();
-    
-	public void precosVenda(ArrayList<Object> animais) {
-		double arroba;
-		double kg;
-		for(int j = 0; j < animais.size(); j = j + 6) {
-			valorAnimalUni.add(animais.get(j));
-		for (int i = 1; i < animais.size(); i = i + 6) {
-			Peso p = new Peso((double) animais.get(i), (double) animais.get(i + 1));
-			this.valorArroba = this.valorArroba + p.getPesoArroba();
-			this.valorKg = this.valorKg + p.getPesoKg();
-			arroba = p.getPesoArroba();
-			valorAnimalUni.add(cp.calculaPrecoArroba(arroba));
-			kg = p.getPesoKg();
-			valorAnimalUni.add(cp.calculaPrecoKg(kg));
-		}
-		}
-		this.valorTotal.add(cp.calculaPrecoArroba(valorArroba));
-		this.valorTotal.add(cp.calculaPrecoKg(valorKg));
+	@Getter @Setter private List<Bovinos> bovinos = new ArrayList<Bovinos>();
+	@Getter @Setter private List<Suinos> suinos = new ArrayList<Suinos>();
+	@Getter @Setter private ArrayList<Double> valorAnimalUniKg = new ArrayList<Double>();
+	@Getter @Setter private ArrayList<Double> valorAnimalUniArroba = new ArrayList<Double>();
+	@Getter @Setter private double valorTotalKg;
+	@Getter @Setter private double valorTotalArroba;
+	@Getter @Setter private Date dataVenda;
+	CalculoPreco cp = new CalculoPreco();	
+
+	public void CalcularVendaBoi() {
+		double tempkg;
+		double tempArroba;
+		valorTotalKg=0;
+		valorTotalArroba =0;		
+		for (Animal obj : bovinos) {
+			tempkg = cp.calculaPrecoKg(obj.getPesoKg());
+			tempArroba = cp.calculaPrecoArroba(obj.getPesoArroba());
+			valorAnimalUniKg.add(tempkg);
+			valorAnimalUniArroba.add(tempArroba);
+			valorTotalKg =+ tempkg; 
+		    valorTotalArroba =+ tempArroba;
+		}		
+		dataVenda = new Date();		
 	}
+	
+	public void CalcularVendaPorco() {
+		double tempkg;
+		double tempArroba;
+		valorTotalKg=0;
+		valorTotalArroba =0;		
+		for (Animal obj : suinos) {
+			tempkg = cp.calculaPrecoKg(obj.getPesoKg());
+			tempArroba = cp.calculaPrecoArroba(obj.getPesoArroba());
+			valorAnimalUniKg.add(tempkg);
+			valorAnimalUniArroba.add(tempArroba);
+			valorTotalKg =+ tempkg; 
+		    valorTotalArroba =+ tempArroba;
+		}		
+		dataVenda = new Date();		
+	}
+	
+
 }
+
+	
+	

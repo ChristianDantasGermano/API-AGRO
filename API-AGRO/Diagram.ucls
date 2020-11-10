@@ -91,14 +91,10 @@
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="6"/>  
   </generalization>  
-  <generalization id="19">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <association id="20">    
+  <association id="19">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="21" name="intrelatorios"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
+      <attribute id="20" name="intrelatorios"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
